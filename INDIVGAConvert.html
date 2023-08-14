@@ -1,3 +1,13 @@
+<!-- I declare that this code was written by me. 
+ I will not copy or allow others to copy my code. 
+ I understand that copying code is considered as plagiarism.
+ 
+ Student Name: Jeysham Jayaseelan
+ Student ID: 22013795
+ Class: E63C
+ Date/Time Last modified: 7.07pm
+ -->
+
 <!DOCTYPE html>
 <html>
 <meta charset="UTF-8">
@@ -28,17 +38,17 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-#header a {
-  color: #fff;
-  text-decoration: none;
-  padding: 10px 20px;
-  margin: 0 5px;
-}
+        #header a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+        }
 
-#header a:hover {
-  background-color: #444;
-  border-radius: 5px;
-}
+        #header a:hover {
+            background-color: #444;
+            border-radius: 5px;
+        }
         #rectangle {
             width: 80%;
             max-width: 800px;
@@ -232,9 +242,14 @@
                 <input type="text" id="from" name="from" required>
                 <label for="to">To:</label>
                 <input type="text" id="to" name="to" required>
-                <a href="#" class="tranc-button" onclick="convertCurrency()">Convert</a>
+                <a href="#" class="tranc-button" onclick="requestOTP()">Convert</a>
             </div>
             <div id="conversion-result" class="conversion-result"></div>
+            <div id="otp-container" class="input-form" style="display: none;">
+                <label for="otp">Enter OTP:</label>
+                <input type="number" id="otp" name="otp" required>
+                <a href="#" class="tranc-button" onclick="validateOTP()">Submit OTP</a>
+            </div>
             <a href="index.html" class="home-button">Home Page</a>
         </div>
     
@@ -247,6 +262,29 @@
         </div>
 
         <script>
+            let otpGenerated = false;
+    
+        function requestOTP() {
+            if (!otpGenerated) {
+                otpGenerated = true;
+                // Generate and send OTP to user
+                alert("An OTP has been sent to your registered email/phone.");
+                document.getElementById("otp-container").style.display = "block";
+            } else {
+                alert("OTP has already been requested. Please check your email/phone.");
+            }
+        }
+    
+        function validateOTP() {
+        const enteredOTP = document.getElementById("otp").value;
+            if (enteredOTP === "123456") { 
+                convertCurrency(); 
+                document.getElementById("otp-container").style.display = "none";
+            } else {
+                alert("Invalid OTP. Please try again.");
+            }
+            }
+    
             // Function to open the popup and overlay
             function openPopup() {
                 // Display the overlay and the custom popup
