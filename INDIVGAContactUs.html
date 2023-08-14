@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Currency Masters</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+      background-color: grey;
+    }
+
+    .button-container {
+      text-align: center;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 30px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 16px;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    .button {
+      display: inline-block;
+      background-color: #007bff;
+      color: #fff;
+      padding: 12px 25px;
+      border-radius: 4px;
+      font-size: 16px;
+      text-decoration: none;
+      transition: background-color 0.3s;
+      cursor: pointer;
+    }
+
+    .button:hover {
+      background-color: #0056b3;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        max-width: 95%;
+      }
+    }
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .popup {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    .popup-button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .popup-button:hover {
+      background-color: #0056b3;
+    }
+    
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Contact Us</h1>
+    <p>If you have any questions or inquiries, please feel free to contact us using this form:</p>
+    <form action="#" method="post" onsubmit="showSuccessMessage(event)">
+      <div class="form-group">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" pattern="[A-Za-z ]+" title="Please enter only letters" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Your Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+      </div>
+      <input type="submit" value="Submit" class="button">
+    </form>
+    <div class="button-container">
+      <a href="index.html" class="button">Back to Homepage</a>
+    </div>
+    <div class="overlay" id="popupOverlay">
+      <div class="popup">
+        <p>Form submitted successfully!</p>
+        <button class="popup-button" id="closePopup">OK</button>
+      </div>
+    </div>
+  </div>
+  <script>
+    const popupOverlay = document.getElementById('popupOverlay');
+    const closePopupButton = document.getElementById('closePopup');
+
+    function showPopup() {
+      popupOverlay.style.display = 'flex';
+    }
+
+    function closePopup() {
+      popupOverlay.style.display = 'none';
+    }
+
+    function showSuccessMessage(event) {
+      event.preventDefault();
+      showPopup();
+    }
+    function redirectToHomepage() {
+      window.location.href = "index.html";
+    }
+
+    closePopupButton.addEventListener('click', function () {
+      closePopup();
+      redirectToHomepage();
+    });
+  </script>
+</body>
+</html>

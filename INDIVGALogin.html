@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currency Masters</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+  body {
+      background-color: #292b2c;
+      font-family: "Arial", sans-serif;
+      font-size: 20px;
+      color: white;
+      text-align: center;
+      margin: 0;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      margin: 0;
+      color: #007bff;
+      font-size: 36px;
+      letter-spacing: 2px;
+    }
+
+    .content {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    .form-container {
+      background-color: rgba(55, 55, 55, 0.9);
+      padding: 20px;
+      width: 45%;
+      max-width: 350px;
+      border-radius: 10px;
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #007bff;
+      font-size: 24px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-bottom: 5px;
+      color: white;
+    }
+
+    input {
+      padding: 10px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button {
+      padding: 10px 15px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+</style>
+
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Currency Masters</h1>
+    </header>
+
+    <div class="content">
+      <div class="form-container">
+        <h2>Login</h2>
+        <form id="login-form">
+          <label for="username">Username:</label>
+          <input type="text" id="username" name="username" required>
+
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required>
+
+          <button type="submit">Login</button>
+        </form>
+      </div>
+
+      <div class="form-container">
+        <h2>Sign Up</h2>
+        <form id="signup-form">
+          <label for="signup-username">Username:</label>
+          <input type="text" id="signup-username" name="signup-username" required>
+
+          <label for="signup-password">Password:</label>
+          <input type="password" id="signup-password" name="signup-password" required>
+
+          <button type="submit">Sign Up</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    const loginForm = document.getElementById('login-form');
+    const signupForm = document.getElementById('signup-form');
+  
+    function showAlertAndRedirect(message) {
+      alert(message);
+
+      window.location.href = "index.html";
+    }
+  
+    loginForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+      showAlertAndRedirect('Login has been successful');
+    });
+  
+    signupForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+      showAlertAndRedirect('Sign up has been successful');
+    });
+  </script>  
+</body>
+</html>

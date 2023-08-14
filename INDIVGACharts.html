@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+    <title>Currency Masters</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: "Actor", Arial, sans-serif;
+            font-size: 20px;
+            color: #333;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        #header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 10px 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background-color: #333;
+            padding: 10px 0;
+        }
+
+        #header a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+        }
+
+        #header a:hover {
+            background-color: #444;
+            border-radius: 5px;
+        }
+
+        #rectangle {
+            width: 80%;
+            max-width: 800px;
+            height: 850px;
+            background-color: #fff;
+            border-radius: 20px;
+            margin: 150px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 80%;
+            height: 50px;
+            background-color: #f2f2f2;
+            border-radius: 10px;
+            margin: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .box a {
+            display: block;
+            width: 30%;
+            height: 100%;
+            padding: 10px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            margin: 10px;
+        }
+
+        .box:hover {
+            background-color: #e0e0e0;
+        }
+
+        #actions {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .chart-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .input-form {
+            display: flex;
+            flex-direction: column;
+            max-width: 300px;
+        }
+
+        .input-form label {
+            margin-bottom: 5px;
+        }
+
+        .input-form input {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .track-currency-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .track-currency-button:hover {
+            background-color: #0056b3;
+        }
+
+        .view-quotes-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .view-quotes-button:hover {
+            background-color: #0056b3;
+        }
+
+        .chart-prices {
+            margin-top: 20px;
+        }
+
+        .chart-prices h3 {
+            margin-top: 0;
+        }
+
+        .labels {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-top: 1px solid #ccc;
+        }
+
+        .labels span {
+            cursor: pointer;
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .labels span:hover {
+            background-color: #f0f0f0;
+        }
+
+        .home-button {
+            background-color: #007bff;;
+            color: #fff;
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            font-size: 16px;
+        }
+
+        .home-button:hover {
+            background-color: #0056b3;
+        }
+
+        #section-header {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .popup {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .popup-message {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .popup-button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .popup-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+
+<body>
+    <div id="header">
+        <a href="index.html">Home</a>
+        <a href ="INDIVGASEND.html">Send Money</a>
+        <a href="INDIVGAConvert.html">Currency Converter</a>
+        <a href="INDIVGAAboutUs.html">About Us</a>
+        <a href="INDIVGAContactUs.html">Contact Us</a>
+    </div>
+    <div id="rectangle">
+        <div id="section-header">Charts</div>
+        <div id="actions">
+            <div class="box">
+                <a href="INDIVGAConvert.html">Convert</a>
+            </div>
+            <div class="box">
+                <a href="INDIVGASEND.html">Send</a>
+            </div>
+        </div>
+        <div class="chart-container">
+            <div class="input-form">
+                <label for="from">From:</label>
+                <input type="text" id="from" name="from" maxlength="3" oninput="this.value = this.value.toUpperCase()">
+                <label for="to">To:</label>
+                <input type="text" id="to" name="to" maxlength="3" oninput="this.value = this.value.toUpperCase()">
+                <label for="amount">Amount:</label>
+                <input type="number" id="amount" name="amount" required>
+                <button class="track-currency-button" onclick="showTrackCurrencyPopup()">Track Currency</button>
+                <button class="view-quotes-button" onclick="showQuotesPopup()">View Transfer Quotes</button>
+            </div>
+            <div class="chart-prices">
+                <h3>Chart Prices</h3>
+                <div class="labels">
+                    <span>12H</span>
+                    <span>1D</span>
+                    <span>1W</span>
+                    <span>1M</span>
+                    <span>1Y</span>
+                    <span>2Y</span>
+                    <span>3Y</span>
+                </div>
+            </div>
+            <a href="index.html" class="home-button">Home Page</a>
+        </div>
+    </div>
+    <div class="overlay" id="trackCurrencyPopupOverlay">
+        <div class="popup">
+            <p class="popup-message">Currency tracking in progress...</p>
+            <button class="popup-button" onclick="closeTrackCurrencyPopup()">Close</button>
+        </div>
+    </div>
+    <div class="overlay" id="popupOverlay">
+        <div class="popup">
+            <p class="popup-message">Quotes are still being tracked currently in real-time.</p>
+            <button class="popup-button" onclick="closePopup()">Close</button>
+        </div>
+    </div>
+    <script>
+
+        function showQuotesPopup() {
+            const popupOverlay = document.getElementById('popupOverlay');
+            popupOverlay.style.display = 'flex';
+        }
+
+        function closePopup() {
+            const popupOverlay = document.getElementById('popupOverlay');
+            popupOverlay.style.display = 'none';
+        }
+        function showTrackCurrencyPopup() {
+        const trackCurrencyPopupOverlay = document.getElementById('trackCurrencyPopupOverlay');
+        trackCurrencyPopupOverlay.style.display = 'flex';
+        }
+
+        function closeTrackCurrencyPopup() {
+        const trackCurrencyPopupOverlay = document.getElementById('trackCurrencyPopupOverlay');
+        trackCurrencyPopupOverlay.style.display = 'none';
+    }
+    </script>
+</body>
+</html>

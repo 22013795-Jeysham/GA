@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currency Masters</title>
+  <style>
+    body {
+      font-family: "Actor", Arial, sans-serif;
+      text-align: center;
+      background-color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    #header {
+      background-color: #007bff;
+      padding: 20px;
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #header-image {
+      height: 100px;
+      width: 200px;
+      margin-left: 20px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 32px;
+      font-weight: bold;
+      flex: 1;
+    }
+
+    #nav {
+      background-color: #333;
+      padding: 10px 0;
+    }
+
+    #nav a {
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 20px;
+      margin: 0 5px;
+    }
+
+    #nav a:hover {
+      background-color: #444;
+      border-radius: 5px;
+    }
+
+    #banner {
+      position: relative;
+      background-size: cover;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #banner h2 {
+      color: #fff;
+      font-size: 24px;
+    }
+
+    #services {
+      max-width: 800px;
+      margin: 30px auto;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .service-box {
+      flex: 1;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .service-box h3 {
+      margin-top: 0;
+      color: #007bff;
+    }
+
+    body, html {
+      height: 100%;
+      margin: 0;
+    }
+
+    .background-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .background-image {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      animation: fadeInOut 6s infinite;
+    }
+
+    @keyframes fadeInOut { 
+      0%, 100% {
+        opacity: 0; 
+      }
+      25% {
+        opacity: 1;
+      }
+      75% {
+        opacity: 1; 
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="background-container">
+    <div class="background-image" alt="Background Image"></div>
+  </div>
+  <div id="header">
+    <div id="logo">
+      <img id="header-image" src="logo.jpg" alt="Currency Masters Logo">
+    </div>
+    <h1>Currency Masters</h1>
+  </div>
+  <div id="nav">
+    <a href="INDIVGACharts.html">Exchange Rates</a>
+    <a href ="INDIVGASEND.html">Send Money</a>
+    <a href="INDIVGAConvert.html">Currency Converter</a>
+    <a href="INDIVGAAboutUs.html">About Us</a>
+    <a href="INDIVGAContactUs.html">Contact Us</a>
+  </div>
+  <div id="banner">
+    <h2>Welcome to Currency Masters</h2>
+  </div>
+  <div id="services">
+    <div class="service-box">
+      <a href="INDIVGACharts.html">
+        <h3>Exchange Rates</h3>
+      </a>
+      <p>Check the latest currency exchange rates to make informed decisions.</p>
+    </div>
+    <div class = "service-box">
+      <a href = "INDIVGASEND.html">
+        <h3>Send Money</h3>
+      </a>
+      <p>Send money quickly to whoever and wherever you want without any troubles.</p>
+    </div>
+    <div class="service-box">
+      <a href="INDIVGAConvert.html">
+        <h3>Currency Converter</h3>
+      </a>
+      <p>Easily convert any amount from one currency to another with our currency converter tool.</p>
+    </div>
+    <div class="service-box">
+      <a href="INDIVGAAboutUs.html">
+        <h3>About Us</h3>
+      </a>
+      <p>Learn more about our company and the services we offer.</p>
+    </div>
+  </div>
+  <script>
+    const backgroundImages = [
+      'Houston-HD-Skyline-Wallpaper.jpg',
+      'R.jpg',
+      '22040-76258.jpg',
+    ];
+
+    const backgroundElement = document.querySelector('.background-image');
+
+    function shuffleBackgroundImage() {
+      const randomIndex = Math.floor(Math.random() * backgroundImages.length);
+      const randomImage = backgroundImages[randomIndex];
+      backgroundElement.style.backgroundImage = `url(${randomImage})`;
+    }
+
+    shuffleBackgroundImage();
+
+    setInterval(() => {
+      shuffleBackgroundImage();
+    }, 4500);
+  </script>
+</body>
+</html>
