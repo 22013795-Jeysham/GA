@@ -170,22 +170,30 @@
     </div>
   </div>
   <script>
+    // Array of background image filenames
     const backgroundImages = [
       'Houston-HD-Skyline-Wallpaper.jpg',
       'R.jpg',
       '22040-76258.jpg',
     ];
 
+    // Get the DOM element with class 'background-image'
     const backgroundElement = document.querySelector('.background-image');
 
+    // Function to shuffle and set a random background image
     function shuffleBackgroundImage() {
-      const randomIndex = Math.floor(Math.random() * backgroundImages.length);
-      const randomImage = backgroundImages[randomIndex];
-      backgroundElement.style.backgroundImage = `url(${randomImage})`;
+    // Generate a random index within the range of backgroundImages array
+    const randomIndex = Math.floor(Math.random() * backgroundImages.length);
+    // Get the randomly selected image filename
+    const randomImage = backgroundImages[randomIndex];
+    // Set the background image of the container element
+    backgroundElement.style.backgroundImage = `url(${randomImage})`;
     }
 
+    // Call the shuffleBackgroundImage function immediately to set an initial image
     shuffleBackgroundImage();
 
+    // Set up a repeating timer to change the background image every 4.5 seconds (4500 milliseconds)
     setInterval(() => {
       shuffleBackgroundImage();
     }, 4500);

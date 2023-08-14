@@ -146,29 +146,42 @@
     </div>
   </div>
   <script>
+    // Get references to the popup overlay and close button
     const popupOverlay = document.getElementById('popupOverlay');
     const closePopupButton = document.getElementById('closePopup');
 
+    // Function to display the popup
     function showPopup() {
-      popupOverlay.style.display = 'flex';
+        popupOverlay.style.display = 'flex';
     }
 
+    // Function to close the popup
     function closePopup() {
-      popupOverlay.style.display = 'none';
+        popupOverlay.style.display = 'none';
     }
 
+    // Function to show a success message and trigger the popup
     function showSuccessMessage(event) {
-      event.preventDefault();
-      showPopup();
-    }
-    function redirectToHomepage() {
-      window.location.href = "index.html";
+        event.preventDefault(); // Prevent default form submission behavior
+        showPopup(); // Show the popup
     }
 
+    // Function to redirect to the homepage
+    function redirectToHomepage() {
+        window.location.href = "index.html";
+    }
+
+    // Add a click event listener to the close button
     closePopupButton.addEventListener('click', function () {
-      closePopup();
-      redirectToHomepage();
+        closePopup(); // Close the popup
+        redirectToHomepage(); // Redirect to the homepage
     });
   </script>
 </body>
 </html>
+
+
+
+
+
+

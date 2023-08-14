@@ -234,33 +234,46 @@
                 <input type="text" id="to" name="to" required>
                 <a href="#" class="tranc-button" onclick="convertCurrency()">Convert</a>
             </div>
+            <div id="conversion-result" class="conversion-result"></div>
             <a href="index.html" class="home-button">Home Page</a>
         </div>
-    </div>
-    <div class="popup-overlay" id="popupOverlay"></div>
-    <div class="custom-popup" id="customPopup">
-        <div class="popup-content">
-            <p>Conversion successful!</p>
-            <button class="popup-button" onclick="closePopup()">OK</button>
+    
+        <div class="popup-overlay" id="popupOverlay"></div>
+        <div class="custom-popup" id="customPopup">
+            <div class="popup-content">
+                <p>Conversion successful!</p>
+                <button class="popup-button" onclick="closePopup()">OK</button>
+            </div>
         </div>
-    </div>
-    <script>
-         function openPopup() {
-            document.getElementById('popupOverlay').style.display = 'block';
-            document.getElementById('customPopup').style.display = 'block';
-        }
 
-        function closePopup() {
-            document.getElementById('popupOverlay').style.display = 'none';
-            document.getElementById('customPopup').style.display = 'none';
-        }
-
-        function convertCurrency() {
-            const amount = parseFloat(document.getElementById('amount').value);
-            const fromCurrency = document.getElementById('from').value.toUpperCase();
-            const toCurrency = document.getElementById('to').value.toUpperCase();
-
-            const exchangeRates = {
+        <script>
+            // Function to open the popup and overlay
+            function openPopup() {
+                // Display the overlay and the custom popup
+                document.getElementById('popupOverlay').style.display = 'block';
+                document.getElementById('customPopup').style.display = 'block';
+            }
+    
+            // Function to close the popup and overlay
+            function closePopup() {
+                // Hide the overlay and the custom popup
+                document.getElementById('popupOverlay').style.display = 'none';
+                document.getElementById('customPopup').style.display = 'none';
+            }
+            function updateConversionResult(result) {
+            document.getElementById('conversion-result').innerHTML = result;
+            }
+    
+            // Function to perform currency conversion
+            function convertCurrency() {
+                // Get input values
+                const amount = parseFloat(document.getElementById('amount').value);
+                const fromCurrency = document.getElementById('from').value.toUpperCase();
+                const toCurrency = document.getElementById('to').value.toUpperCase();
+    
+                // Exchange rate data
+                const exchangeRates = {
+                // Exchange rate values
                 USD: 1,
                 EUR: 0.85,
                 GBP: 0.72,
@@ -305,30 +318,37 @@
                 TWD: 27.98,
                 COP: 3819.69,
                 VND: 22711.60,
+
+                };
+                // Validate input values
+                if (isNaN(amount) || amount <= 0) {
+                    alert('Please enter a valid amount.');
+                    return;
+                }
+    
+                if (!isValidCurrency(fromCurrency, exchangeRates) || !isValidCurrency(toCurrency, exchangeRates)) {
+                    alert('Invalid currencies selected.');
+                    return;
+                }
+    
+                // Calculate converted amount
+                const convertedAmount = (amount / exchangeRates[fromCurrency]) * exchangeRates[toCurrency];
+    
+                // Display conversion result
+                const resultMessage = `${amount} ${fromCurrency} is equivalent to ${convertedAmount.toFixed(2)} ${toCurrency}.`;
+                updateConversionResult(resultMessage);
+    
+                // Open the popup
+                openPopup();
+            }
+    
+            // Function to check if a currency is valid based on exchange rates data
+            function isValidCurrency(currency, exchangeRates) {
+                return exchangeRates.hasOwnProperty(currency);
+            }
             
-        }
 
-        if (isNaN(amount) || amount <= 0) {
-            alert('Please enter a valid amount.');
-            return;
-        }
-
-        if (!isValidCurrency(fromCurrency, exchangeRates) || !isValidCurrency(toCurrency, exchangeRates)) {
-            alert('Invalid currencies selected.');
-            return;
-        }
-
-        const convertedAmount = (amount / exchangeRates[fromCurrency]) * exchangeRates[toCurrency];
-
-        alert(`${amount} ${fromCurrency} is equivalent to ${convertedAmount.toFixed(2)} ${toCurrency}.`);
-
-        openPopup();
-        }
-
-        function isValidCurrency(currency, exchangeRates) {
-        return exchangeRates.hasOwnProperty(currency);
-        }
-    </script>
-</body>
-</html>
-
+        </script>
+    </body>
+    </html>
+    

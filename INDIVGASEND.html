@@ -221,16 +221,22 @@
         </div>
     </div>
     <script>
+        // Wait for the DOM to be fully loaded before executing the code
         document.addEventListener("DOMContentLoaded", function() {
+            // Get references to the elements
             const sendButton = document.querySelector(".send-button");
             const popup = document.getElementById("popup");
             const closePopupButton = document.getElementById("closePopup");
 
+            // Add click event listener to the "Send Message" button
             sendButton.addEventListener("click", function() {
+                // Display the popup by changing its style
                 popup.style.display = "flex";
             });
 
+            // Add click event listener to the "Close" button within the popup
             closePopupButton.addEventListener("click", function() {
+                // Hide the popup by changing its style
                 popup.style.display = "none";
             });
         });

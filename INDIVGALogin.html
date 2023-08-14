@@ -122,26 +122,35 @@
     </div>
   </div>
 
-
   <script>
+    // Get references to the login and signup forms
     const loginForm = document.getElementById('login-form');
     const signupForm = document.getElementById('signup-form');
-  
+
+    // Function to show an alert with a message and redirect to index.html
     function showAlertAndRedirect(message) {
+      // Show an alert with the provided message
       alert(message);
 
+      // Redirect to the index.html page
       window.location.href = "index.html";
     }
-  
+
+    // Add an event listener to the login form's submit event
     loginForm.addEventListener('submit', function (event) {
+      // Prevent the default form submission behavior
       event.preventDefault();
+      // Call the showAlertAndRedirect function with a success message
       showAlertAndRedirect('Login has been successful');
     });
-  
+
+    // Add an event listener to the signup form's submit event
     signupForm.addEventListener('submit', function (event) {
+      // Prevent the default form submission behavior
       event.preventDefault();
+      // Call the showAlertAndRedirect function with a success message
       showAlertAndRedirect('Sign up has been successful');
     });
-  </script>  
+  </script>
 </body>
 </html>
